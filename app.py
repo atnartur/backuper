@@ -12,8 +12,6 @@ tasks_dir_path = environ.get('TASKS_DIR', 'tasks')
 
 
 if __name__ == '__main__':
-    from adapters.config import *
-
     tasks_dir = []
     try:
         tasks_dir = listdir(tasks_dir_path)
