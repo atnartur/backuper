@@ -1,7 +1,18 @@
-if __name__ == '__main__':
-    from os import listdir, environ, path
+from os import listdir, environ, path
+from yaml import load
 
-    tasks_dir_path = environ.get('TASKS_DIR', 'tasks')
+
+try:
+    config = load(open('config.yml'))
+except FileNotFoundError:
+    print('config not found')
+    exit(1)
+
+tasks_dir_path = environ.get('TASKS_DIR', 'tasks')
+
+
+if __name__ == '__main__':
+    from adapters.config import *
 
     tasks_dir = []
     try:
@@ -14,4 +25,5 @@ if __name__ == '__main__':
         if path.isfile(path.join(tasks_dir_path, task_file)) and task_file.endswith('.py') and not task_file.endswith('__init__.py'):
             task_name = task_file[:-3]
             print('starting %s' % task_name)
-            __import__(tasks_dir_path + '.' + task_name, globals(), locals())
+            task = __import__(tasks_dir_path + '.' + task_name, globals(), locals(), ['run'])
+            task.run()

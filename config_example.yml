@@ -1,0 +1,6 @@
+temp_dir: temp
+yandex_disk:
+  dir: backupstore
+  login:
+  pass:
+  token:
