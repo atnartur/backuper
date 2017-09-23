@@ -1,6 +1,6 @@
 import os
-import shutil
 import logging
+import shutil
 
 
 def getPath(projectName):
@@ -16,10 +16,8 @@ def getPath(projectName):
 
 def clear(projectName):
     try:
-        for file in os.listdir(path="./" + projectName):
-            os.remove('./' + projectName + '/' + file)
-        os.removedirs('./' + projectName)
+        shutil.rmtree('./' + projectName)
         logging.info(u'Folder deleted')
     except FileNotFoundError:
-        logging.error(u'File not found error while deleting folder')
         pass
+
