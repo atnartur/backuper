@@ -1,4 +1,5 @@
 import paramiko
+import logging
 
 host = '192.168.0.8'
 user = 'login'
