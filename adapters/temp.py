@@ -2,7 +2,7 @@ import os
 import logging
 import shutil
 
-logging.basicConfig(filename='../log/folder.log', level=logging.DEBUG, format='%(asctime)s : %(levelname)s : %(message)s')
+logging.basicConfig(level=logging.DEBUG, format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
 
 
 def create():
