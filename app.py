@@ -1,6 +1,8 @@
 from os import listdir, environ, path
 from yaml import load
+import logging
 
+logging.basicConfig(level=logging.DEBUG, format= u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
 
 try:
     config = load(open('config.yml'))

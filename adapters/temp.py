@@ -1,8 +1,5 @@
 import os
-import logging
 import shutil
-
-logging.basicConfig(level=logging.DEBUG, format=u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
 
 
 def getPath(projectName):
