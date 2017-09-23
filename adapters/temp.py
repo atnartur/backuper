@@ -5,15 +5,16 @@ import shutil
 def getPath(projectName):
     path = os.path.abspath('../temp/' + projectName)
     try:
-        os.makedirs('../temp/' + projectName, mode=0o777, exist_ok=False)
+        os.makedirs(path, mode=0o777, exist_ok=False)
         return path
     except FileExistsError:
         pass
 
 
 def clear(projectName):
+    path = os.path.abspath('../temp/' + projectName)
     try:
-        shutil.rmtree('../temp/' + projectName)
+        shutil.rmtree(path)
     except FileNotFoundError:
         pass
 
