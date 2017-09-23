@@ -5,7 +5,7 @@ import shutil
 def getPath(projectName):
     path = os.path.abspath(os.path.join('..', 'temp', projectName))
     try:
-        return os.path.abspath(os.makedirs(path, mode=0o777, exist_ok=False))
+        return os.makedirs(path, mode=0o777, exist_ok=False)
     except FileExistsError:
         return path
 
@@ -16,4 +16,5 @@ def clear(projectName):
         shutil.rmtree(path)
     except FileNotFoundError:
         pass
+
 
