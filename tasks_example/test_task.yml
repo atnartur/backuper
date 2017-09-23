@@ -1,2 +1,6 @@
 test:
   config: 1
+ssh:
+  host:
+  user:
+  pass:
