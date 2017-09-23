@@ -17,4 +17,3 @@ def clear(projectName):
         shutil.rmtree(path)
     except FileNotFoundError:
         pass
-
