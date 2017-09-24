@@ -1,10 +1,10 @@
-from adapters.config import *
+from adapters.task_config import *
 from adapters.ssh import *
 
 def run():
     print('task "test" executed')
 
-    res = config('test')
+    res = task_config('test')
     print(res)
 
     client = ssh(res['ssh']['host'], res['ssh']['user'], res['ssh']['pass'])
