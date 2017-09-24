@@ -2,10 +2,11 @@ from os import listdir, environ, path
 from yaml import load
 import logging
 
+
 logging.basicConfig(level=logging.DEBUG, format= u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
 
 try:
-    config = load(open('config.yml'))
+    config = load(open('config.yml').read())
 except FileNotFoundError:
     logging.error(u'Config not found')
     exit(1)
@@ -27,3 +28,4 @@ if __name__ == '__main__':
             logging.error(u'starting %s' % task_name)
             task = __import__(tasks_dir_path + '.' + task_name, globals(), locals(), ['run'])
             task.run()
+
