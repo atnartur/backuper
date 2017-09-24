@@ -1,6 +1,4 @@
 temp_dir: temp
 yandex_disk:
   dir: backupstore
-  login:
-  pass:
-  token:
+  token: AQAEA7qh-ksFAAIqVdoOqjzBr09Mtg2fzmq9oZw
