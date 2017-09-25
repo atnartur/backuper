@@ -1,7 +1,8 @@
 from os import listdir, environ, path
 import logging
 
-logging.basicConfig(level=logging.DEBUG, format= u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
+
+logging.basicConfig(level=logging.INFO, format= u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
 
 tasks_dir_path = environ.get('TASKS_DIR', 'tasks')
 yadisk_token = environ.get('YADISK_TOKEN')
