@@ -2,4 +2,9 @@
 
 Утилита для создания бекапов
 
-`docker build `
+## Docker
+
+```
+docker build -t atnartur/backuper .
+docker push atnartur/backuper
+```
