@@ -1,18 +1,11 @@
 from os import listdir, environ, path
-from yaml import load
 import logging
-
 
 logging.basicConfig(level=logging.DEBUG, format= u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
 
-try:
-    config = load(open('config.yml').read())
-except FileNotFoundError:
-    logging.error(u'Config not found')
-    exit(1)
-
 tasks_dir_path = environ.get('TASKS_DIR', 'tasks')
-
+yadisk_token = environ.get('YADISK_TOKEN')
+yadisk_dir = environ.get('YADISK_DIR', 'backupstore')
 
 if __name__ == '__main__':
     tasks_dir = []
