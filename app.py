@@ -13,7 +13,12 @@ sentry_dsn = environ.get('SENTRY_DSN', '')
 
 if sentry_dsn != '':
     from raven import Client
-    sentry = Client(sentry_dsn)
+    from raven.transport.requests import RequestsHTTPTransport
+
+    sentry = Client({
+        'dsn': sentry_dsn,
+        'transport': RequestsHTTPTransport
+    })
 
 if __name__ == '__main__':
     tasks_dir = []
