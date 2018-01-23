@@ -15,10 +15,7 @@ if sentry_dsn != '':
     from raven import Client
     from raven.transport.requests import RequestsHTTPTransport
 
-    sentry = Client({
-        'dsn': sentry_dsn,
-        'transport': RequestsHTTPTransport
-    })
+    sentry = Client(sentry_dsn, transport=RequestsHTTPTransport)
 
 if __name__ == '__main__':
     tasks_dir = []
