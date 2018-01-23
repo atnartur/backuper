@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  app:
+    image: atnartur/backuper:latest
+    environment:
+      YADISK_TOKEN: TOKEN
+    volumes:
+      - ./:/app/tasks
