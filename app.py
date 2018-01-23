@@ -26,7 +26,8 @@ if __name__ == '__main__':
     # добавляем папку с задачами в список для поиска импортируемых файлов
     sys.path.insert(0, tasks_dir_path)
 
-    print('starting')
+    logging.info('starting')
+
     start_time = time.time()
     tasks_count = 0
 
@@ -43,11 +44,12 @@ if __name__ == '__main__':
 
         if path.isfile(path.join(tasks_dir_path, task_file)) and task_file.endswith('.py') and not task_file.endswith('__init__.py'):
             task_name = task_file[:-3]
-            logging.info(u'starting %s' % task_name)
+            logging.info(u'--- starting %s ---' % task_name)
             spec = importlib.util.spec_from_file_location("task", path.join(tasks_dir_path, task_file))
             task = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(task)
             task.run()
             tasks_count += 1
 
-    print('finished: %s tasks processed on %.2f seconds' % (tasks_count, time.time() - start_time))
+    logging.info('')
+    logging.info('finished: %s tasks processed on %.2f seconds' % (tasks_count, time.time() - start_time))
