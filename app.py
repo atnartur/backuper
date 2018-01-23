@@ -1,6 +1,7 @@
 from os import listdir, environ, path
 import logging
 import time
+import importlib.util
 
 logging.basicConfig(level=logging.INFO, format= u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
 
@@ -24,7 +25,10 @@ if __name__ == '__main__':
         if path.isfile(path.join(tasks_dir_path, task_file)) and task_file.endswith('.py') and not task_file.endswith('__init__.py'):
             task_name = task_file[:-3]
             logging.info(u'starting %s' % task_name)
-            task = __import__(tasks_dir_path + '.' + task_name, globals(), locals(), ['run'])
+            spec = importlib.util.spec_from_file_location("task", path.join(tasks_dir_path, task_file))
+            task = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(task)
+            # task = __import__(tasks_dir_path + '.' + task_name, globals(), locals(), ['run'])
             task.run()
             tasks_count += 1
 
