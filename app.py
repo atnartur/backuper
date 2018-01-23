@@ -13,9 +13,7 @@ sentry_dsn = environ.get('SENTRY_DSN', '')
 
 if sentry_dsn != '':
     from raven import Client
-    from raven.transport.requests import RequestsHTTPTransport
-
-    sentry = Client(sentry_dsn, transport=RequestsHTTPTransport)
+    sentry = Client(sentry_dsn)
 
 if __name__ == '__main__':
     tasks_dir = []
@@ -36,11 +34,11 @@ if __name__ == '__main__':
 
     # если указано название задачи, обрабатываем только ее
     if (len(sys.argv) > 1):
-        task_name = sys.argv[1]
+        argv_task_name = sys.argv[1]
 
     for task_file in tasks_dir:
-        if (task_name is not None):
-            if (task_file != task_name + '.py'):
+        if (argv_task_name):
+            if (task_file != argv_task_name + '.py'):
                 continue
 
         if path.isfile(path.join(tasks_dir_path, task_file)) and task_file.endswith('.py') and not task_file.endswith('__init__.py'):
