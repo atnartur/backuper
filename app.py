@@ -9,6 +9,11 @@ logging.basicConfig(level=logging.INFO, format= u'%(filename)s[LINE:%(lineno)d]#
 tasks_dir_path = environ.get('TASKS_DIR', 'tasks')
 yadisk_token = environ.get('YADISK_TOKEN')
 yadisk_dir = environ.get('YADISK_DIR', 'backupstore')
+sentry_dsn = environ.get('SENTRY_DSN', '')
+
+if sentry_dsn != '':
+    from raven import Client
+    sentry = Client(sentry_dsn)
 
 if __name__ == '__main__':
     tasks_dir = []
