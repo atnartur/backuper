@@ -4,7 +4,7 @@ import time
 import importlib.util
 import sys
 
-logging.basicConfig(level=logging.INFO, format= u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
+logging.basicConfig(level=logging.INFO, format= u'%(levelname)-8s [%(asctime)s] %(message)s')
 
 tasks_dir_path = environ.get('TASKS_DIR', 'tasks')
 yadisk_token = environ.get('YADISK_TOKEN')
