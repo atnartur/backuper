@@ -25,7 +25,17 @@ if __name__ == '__main__':
     start_time = time.time()
     tasks_count = 0
 
+    task_name = None
+
+    # если указано название задачи, обрабатываем только ее
+    if (len(sys.argv) > 1):
+        task_name = sys.argv[1]
+
     for task_file in tasks_dir:
+        if (task_name is not None):
+            if (task_file != task_name + '.py'):
+                continue
+
         if path.isfile(path.join(tasks_dir_path, task_file)) and task_file.endswith('.py') and not task_file.endswith('__init__.py'):
             task_name = task_file[:-3]
             logging.info(u'starting %s' % task_name)
