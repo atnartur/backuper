@@ -2,6 +2,7 @@ from os import listdir, environ, path
 import logging
 import time
 import importlib.util
+import sys
 
 logging.basicConfig(level=logging.INFO, format= u'%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s')
 
@@ -17,6 +18,9 @@ if __name__ == '__main__':
         logging.error(u'Task dir not found')
         exit(1)
 
+    # добавляем папку с задачами в список для поиска импортируемых файлов
+    sys.path.insert(0, tasks_dir_path)
+
     print('starting')
     start_time = time.time()
     tasks_count = 0
@@ -28,7 +32,6 @@ if __name__ == '__main__':
             spec = importlib.util.spec_from_file_location("task", path.join(tasks_dir_path, task_file))
             task = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(task)
-            # task = __import__(tasks_dir_path + '.' + task_name, globals(), locals(), ['run'])
             task.run()
             tasks_count += 1
 
