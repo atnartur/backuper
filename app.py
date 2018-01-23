@@ -30,14 +30,14 @@ if __name__ == '__main__':
     start_time = time.time()
     tasks_count = 0
 
-    task_name = None
+    argv_task_name = None
 
     # если указано название задачи, обрабатываем только ее
     if (len(sys.argv) > 1):
         argv_task_name = sys.argv[1]
 
     for task_file in tasks_dir:
-        if (argv_task_name):
+        if (argv_task_name is not None):
             if (task_file != argv_task_name + '.py'):
                 continue
 
