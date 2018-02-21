@@ -1,7 +1,7 @@
 import paramiko
 import logging
 
-def ssh(host, user, password, port=22, **kwargs):
+def ssh(host, user, password='', port=22, **kwargs):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     # Подключение
