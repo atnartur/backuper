@@ -5,6 +5,6 @@
 ## Docker
 
 ```
-docker build -t atnartur/backuper .
-docker push atnartur/backuper
+docker build -t atnartur/backuper:latest .
+docker push atnartur/backuper:latest
 ```
